@@ -13,10 +13,29 @@ else
 fi
 if (( $heads==21 && $tails==21 ))
 then
-   echo "Match draw"
-   break
+     echo "Match draw and continues till diff equal to 2"
+     while (( $num != 0 ))
+     do
+   random1=$(( RANDOM%2 ))
+  if (( $random1 == 1))
+  then
+    ((heads++))
+  else
+    ((tails++))
+  fi
+  if (( $heads==23 ))
+  then
+    echo "head reached 23 points "
+    break
+  fi
+  if (( $tails==23 ))
+  then
+    echo "tail reached 23 points"
+    break
+  fi
+  done
+  
 fi
-
 if (( $heads==21 ))
 then
    echo "head won"
